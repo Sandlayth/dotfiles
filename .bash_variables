@@ -1,6 +1,8 @@
 # ~/.bash_variables
 #
 
+export HISTSIZE=-1
+export HISTFILESIZE=-1
 export GOPATH=$HOME.go/
 
 if [ -f ~/.bash_env ]; then

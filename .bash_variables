@@ -1,0 +1,8 @@
+# ~/.bash_variables
+#
+
+export GOPATH=$HOME.go/
+
+if [ -f ~/.bash_env ]; then
+    . ~/.bash_env
+fi

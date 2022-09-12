@@ -1,0 +1,26 @@
+[include]
+    path = ~/.gitconfig.local
+[alias]
+    ci      = commit
+    cia     = commit --amend
+    cp      = cherry-pick
+    co      = checkout
+    st      = status
+    br      = branch
+    pushf   = push -f
+    graph   = log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit
+    oneline = log --pretty=oneline
+    cleanbranch   = !"git branch | sed 's|* |  |' | sort > /tmp/local && git branch -r | sed 's|origin/||' | sort > /tmp/remote && comm -23 /tmp/local /tmp/remote > /tmp/merged-branches && vim /tmp/merged-branches && xargs git branch -D </tmp/merged-branches"
+[color]
+    diff = auto
+    status = auto
+    branch = auto
+[core]
+    editor = vim
+    excludesfile = ~/.gitconfig.ignore
+    autocrlf = true
+    whitespace = cr-at-eol
+[init]
+    defaultBranch = master
+[web]
+    browser = firefox

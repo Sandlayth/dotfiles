@@ -22,6 +22,10 @@ if [ -f ~/.bash_prompt ]; then
     . ~/.bash_prompt
 fi
 
+# FuzzyFinder
+if [ -f ~/.fzf.bash ]; then
+    source ~/.fzf.bash
+fi
 # If not running interactively, don't do anything
 [[ $- != *i* ]] && return
 

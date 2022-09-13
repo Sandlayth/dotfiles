@@ -18,8 +18,6 @@
 [core]
     editor = vim
     excludesfile = ~/.gitconfig.ignore
-    autocrlf = true
-    whitespace = cr-at-eol
 [init]
     defaultBranch = master
 [web]

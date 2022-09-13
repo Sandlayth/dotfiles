@@ -5,6 +5,16 @@ export HISTSIZE=-1
 export HISTFILESIZE=-1
 export GOPATH=$HOME.go/
 
+# For tmux multi session bash history
+# avoid duplicates..
+export HISTCONTROL=ignoredups:erasedups
+
+# append history entries..
+shopt -s histappend
+
+# After each command, save and reload history
+export PROMPT_COMMAND="history -a; history -c; history -r; $PROMPT_COMMAND"
+
 if [ -f ~/.bash_env ]; then
     . ~/.bash_env
 fi

@@ -26,6 +26,12 @@ fi
 if [ -f ~/.fzf.bash ]; then
     source ~/.fzf.bash
 fi
+
+# Completion scripts
+if [ -f ~/.git-completion.bash ]; then
+  . ~/.git-completion.bash
+fi
+
 # If not running interactively, don't do anything
 [[ $- != *i* ]] && return
 

@@ -17,6 +17,11 @@ if [ -f ~/.bash_functions ]; then
     . ~/.bash_functions
 fi
 
+# Functions
+if [ -f ~/.bash_prompt ]; then
+    . ~/.bash_prompt
+fi
+
 # If not running interactively, don't do anything
 [[ $- != *i* ]] && return
 

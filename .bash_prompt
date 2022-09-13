@@ -1,0 +1,31 @@
+# ~/.bash_prompt
+#
+function set_bash_prompt () {
+    if test $? -eq 0 ; then
+        PATH_COLOR="\[\e[32;1m\]"
+    else
+        PATH_COLOR="\[\e[31;1m\]"
+    fi
+    COLOR_USERNAME="\[\e[34;1m\]"
+    COLOR_AT="\[\e[34;1m\]"
+    COLOR_HOSTNAME="\[\e[34;1m\]"
+    COLOR_GITBRANCH="\[\e[41;1;37;1m\]"
+    COLOR_NONE="\[\e[0m\]"
+# Set the PS1 to be "[workingdirectory:commandcount"
+    PS1="${COLOR_NONE}[${PATH_COLOR}\w${COLOR_NONE}"
+# Add git branch portion of the prompt, this adds ":branchname"
+    git --version 2>&1 >/dev/null # improvement by tripleee
+    GIT_IS_AVAILABLE=$?
+    if [ $GIT_IS_AVAILABLE -eq 0 ]; then #...
+        # Git is installed
+        if [ -d .git ] || git rev-parse --is-inside-work-tree > /dev/null 2>&1; then
+            # Inside of a git repository
+            GIT_BRANCH=$(git symbolic-ref --short HEAD)
+            PS1="${PS1}:${COLOR_GITBRANCH} ${GIT_BRANCH} ${COLOR_NONE}${COLOR_NONE}"
+        fi
+    fi
+# Close out the prompt, this adds "]\n[username@hostname] "
+    PS1="${PS1}]\n${COLOR_NONE}[${COLOR_USERNAME}\u${COLOR_AT}@"
+    export PS1="${PS1}${COLOR_HOSTNAME}\h${COLOR_NONE}]$ "
+}
+export PROMPT_COMMAND=set_bash_prompt

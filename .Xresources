@@ -1,0 +1,49 @@
+urxvt*foreground: #f2f2f2
+urxvt*background: #101010
+
+urxvt*color0: #101010
+urxvt*color1: #f13a21
+urxvt*color2: #93f91d
+urxvt*color3: #ffd00a
+urxvt*color4: #004f9e
+urxvt*color5: #ec0048
+urxvt*color6: #2aa7e7
+urxvt*color7: #f2f2f2
+urxvt*color8: #1d202f
+urxvt*color9: #ff361e
+urxvt*color10: #ffc005
+urxvt*color11: #93ff00
+urxvt*color12: #0071ff
+urxvt*color13: #ef0051
+urxvt*color14: #4bb8fd
+urxvt*color15: #a020f0
+
+urxvt*font: xft:Bitstream\ Vera\ Sans\ Mono:style=roman:pixelsize=13
+urxvt*scrollBar: False
+urxvt*scrollColor: #828282
+urxvt*scrollBar_floating: True
+urxvt*underlineColor: #5781ff
+URxvt.depth: 32
+URxvt.background: [95]#000000
+
+URxvt.keysym.S-Up: \033[1;2A
+URxvt.keysym.S-Down: \033[1;2B
+URxvt.keysym.S-Right: \033[1;2C
+URxvt.keysym.S-Left: \033[1;2D
+URxvt.keysym.S-Home: \033[1;2H
+URxvt.keysym.S-End: \033[1;2F
+URxvt.keysym.C-Right: \033[1;5C
+URxvt.keysym.C-Left: \033[1;5D
+
+URxvt.keysym.C-Up:     perl:font-size:increase
+URxvt.keysym.C-Down:   perl:font-size:decrease
+URxvt.keysym.C-S-Up:   perl:font-size:incglobal
+URxvt.keysym.C-S-Down: perl:font-size:decglobal
+URxvt.keysym.C-S-Z:    perl:font-size:reset
+
+URxvt.iso14755: false
+URxvt.iso14755_52: false
+
+URxvt.perl-ext-common: default,matcher,font-size
+URxvt.url-launcher: /usr/bin/firefox
+URxvt.matcher.button: 2

@@ -2,7 +2,7 @@
 #
 
 # Variables
-if [ -f ./.bash_variables ]; then
+if [ -f ~/.bash_variables ]; then
     . ~/.bash_variables
 fi
 

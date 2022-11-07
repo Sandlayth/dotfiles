@@ -3,7 +3,7 @@
 
 export HISTSIZE=-1
 export HISTFILESIZE=-1
-export GOPATH=$HOME.go/
+export GOPATH=$HOME/.go/
 
 # For tmux multi session bash history
 # avoid duplicates..

@@ -28,6 +28,14 @@ if [ -f ~/.fzf.bash ]; then
 fi
 
 # Completion scripts
+if [ -f /etc/bash_completion ]; then
+  source /etc/bash_completion
+fi
+
+if [ -d /usr/local/etc/bash_completion.d/ ]; then
+  for f in /usr/local/etc/bash_completion.d/*; do source $f; done
+fi
+
 if [ -f ~/.git-completion.bash ]; then
   . ~/.git-completion.bash
 fi

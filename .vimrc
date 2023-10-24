@@ -8,6 +8,7 @@ set backspace=indent,eol,start  " more powerful backspacing
 " Now we set some defaults for the editor
 set history=50                  " keep 50 lines of command line history
 set ruler                       " show the cursor position all the time
+set cursorline                  " highlight the cursor line
 
 " Suffixes that get lower priority when doing tab completion for filenames.
 " These are files we are not likely to want to edit or read.
@@ -32,9 +33,6 @@ filetype plugin indent on
 " Put these in an autocmd group, so that we can delete them easily.
 augroup vimrcEx
 au!
-
-" For all text files set 'textwidth' to 78 characters.
-autocmd FileType text setlocal textwidth=78
 
 " When editing a file, always jump to the last known cursor position.
 " Don't do it when the position is invalid or when inside an event handler
@@ -61,7 +59,7 @@ endif
 
 set whichwrap+=<,>,[,]
 
-" colorise les nbsp
+" colorize nbsp
 highlight NbSp ctermbg=lightgray guibg=lightred
 match NbSp /\%xa0/
 
@@ -74,19 +72,8 @@ let g:indentLine_color_term = 239
 let g:indentLine_color_gui = '#09AA08'
 let g:indentLine_char = '│'
 let g:powerline_pycmd = 'py3'
-
-autocmd Filetype markdown setlocal wrap
-autocmd Filetype markdown setlocal linebreak
-autocmd Filetype markdown setlocal nolist
-autocmd Filetype markdown setlocal columns=80
-
-autocmd Filetype tex setlocal wrap
-autocmd Filetype tex setlocal linebreak
-autocmd Filetype tex setlocal nolist
-autocmd Filetype tex setlocal columns=80
-
-
 set t_Co=256
+
 let g:Powerline_symbols = "fancy"
 
 

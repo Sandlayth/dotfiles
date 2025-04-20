@@ -1,0 +1,10 @@
+[Unit]
+Description=Notify to go move and make sport
+
+[Timer]
+OnBootSec=5m
+OnUnitActiveSec=90m
+Persistent=true
+
+[Install]
+WantedBy=timers.target

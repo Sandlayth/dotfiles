@@ -1,0 +1,8 @@
+[Unit]
+Description=Notify to make sport every 40 minutes
+After=network.target
+
+[Service]
+ExecStart=/bin/sh -c 'notify-send "Move from your Desk! Break time!"'
+Environment=DISPLAY=:0
+Environment=XDG_RUNTIME_DIR=/run/user/%U

@@ -7,6 +7,7 @@
     co      = checkout
     st      = status
     br      = branch
+    mr      = push -o merge_request.create
     pullp   = pull --prune
     pushf   = push -f
     graph   = log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit
@@ -23,3 +24,8 @@
     defaultBranch = master
 [web]
     browser = firefox
+[user]
+	name = Sandlayth
+	email = modepadu95@riseup.net
+[push]
+	autoSetupRemote = true

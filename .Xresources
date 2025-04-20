@@ -18,7 +18,7 @@ urxvt*color13: #ef0051
 urxvt*color14: #4bb8fd
 urxvt*color15: #a020f0
 
-urxvt*font: xft:Bitstream\ Vera\ Sans\ Mono:style=roman:pixelsize=13
+urxvt*font: xft:DejaVu Sans Mono:style=Book:pixelsize=13
 urxvt*scrollBar: False
 urxvt*scrollColor: #828282
 urxvt*scrollBar_floating: True

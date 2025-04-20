@@ -40,6 +40,10 @@ if [ -f ~/.git-completion.bash ]; then
   . ~/.git-completion.bash
 fi
 
+if [ -f ~/.kube-completion.bash ]; then
+  . ~/.kube-completion.bash
+fi
+
 # If not running interactively, don't do anything
 [[ $- != *i* ]] && return
 

@@ -4,7 +4,7 @@
 export HISTSIZE=-1
 export HISTFILESIZE=-1
 export GOPATH=$HOME/.go/
-
+export PATH=$PATH:/snap/bin:/opt/arcanist/bin:${KREW_ROOT:-$HOME/.krew}/bin:
 # For tmux multi session bash history
 # avoid duplicates..
 export HISTCONTROL=ignoredups:erasedups

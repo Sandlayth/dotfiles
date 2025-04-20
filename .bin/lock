@@ -1,0 +1,18 @@
+#!/bin/bash
+
+# Temporary image file
+IMAGE=/tmp/lockscreen.png
+
+# Take a screenshot
+scrot "$IMAGE"
+
+# Blur the screenshot (change the value for stronger/weaker blur)
+convert "$IMAGE" -blur 0x8 "$IMAGE"
+
+
+# Lock screen with blurred image
+i3lock -i "$IMAGE"
+
+# Optional: Remove the image after unlocking (comment out if you want to keep it)
+rm "$IMAGE"
+

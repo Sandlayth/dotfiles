@@ -1,0 +1,8 @@
+[Unit]
+Description=Change wallpaper every 5 minutes
+After=network.target
+
+[Service]
+ExecStart=/bin/sh -c 'feh --bg-fill "$(find -L /usr/share/wallpapers -iname "1920x1080.svg" | shuf | head -n 1)"'
+Environment=DISPLAY=:0
+Environment=XDG_RUNTIME_DIR=/run/user/%U

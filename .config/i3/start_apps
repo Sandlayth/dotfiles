@@ -1,0 +1,18 @@
+~/.screenlayout/home.sh &
+clipcatd  &
+urxvt &
+redshift-gtk &
+feh --bg-fill $(find -L /usr/share/wallpapers -iname '1920x1080.svg' | shuf | head -n 1)
+numlockx &
+pasystray &
+# discord &
+ferdium &
+signal-desktop &
+thunderbird &
+bitwarden &
+librewolf &
+run_keybase &
+xinput set-prop 'SynPS/2 Synaptics TouchPad' 'libinput Accel Speed' 0.7
+xinput set-prop 'SynPS/2 Synaptics TouchPad' 'libinput Tapping Enabled' 1
+xset +fp /home/sandlayth/.local/share/fonts
+xset fp rehash

@@ -1,0 +1,12 @@
+[Unit]
+Description=Monitor hotplug event watcher for Polybar
+After=graphical.target
+
+[Service]
+ExecStart=/home/sandlayth/.config/polybar/monitor-hotplug.sh
+Restart=always
+Environment=DISPLAY=:0
+Environment=XAUTHORITY=/home/sandlayth/.Xauthority
+
+[Install]
+WantedBy=default.target

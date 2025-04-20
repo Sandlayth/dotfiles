@@ -1,0 +1,28 @@
+[Default Applications]
+x-scheme-handler/http=userapp-Firefox-M694U2.desktop
+text/html=userapp-Firefox-M694U2.desktop
+application/xhtml+xml=userapp-Firefox-M694U2.desktop
+x-scheme-handler/https=userapp-Firefox-M694U2.desktop
+x-scheme-handler/mailto=thunderbird.desktop
+application/pdf=zathura.desktop
+x-scheme-handler/about=firefox.desktop
+x-scheme-handler/unknown=firefox.desktop
+x-scheme-handler/chrome=userapp-Firefox-M694U2.desktop
+application/x-extension-htm=userapp-Firefox-M694U2.desktop
+application/x-extension-html=userapp-Firefox-M694U2.desktop
+application/x-extension-shtml=userapp-Firefox-M694U2.desktop
+application/x-extension-xhtml=userapp-Firefox-M694U2.desktop
+application/x-extension-xht=userapp-Firefox-M694U2.desktop
+
+[Added Associations]
+x-scheme-handler/http=firefox-esr.desktop;userapp-Firefox-M694U2.desktop;
+text/html=firefox-esr.desktop;userapp-Firefox-M694U2.desktop;
+application/xhtml+xml=firefox-esr.desktop;userapp-Firefox-M694U2.desktop;
+x-scheme-handler/https=firefox-esr.desktop;userapp-Firefox-M694U2.desktop;
+x-scheme-handler/mailto=thunderbird.desktop;
+x-scheme-handler/chrome=userapp-Firefox-M694U2.desktop;
+application/x-extension-htm=userapp-Firefox-M694U2.desktop;
+application/x-extension-html=userapp-Firefox-M694U2.desktop;
+application/x-extension-shtml=userapp-Firefox-M694U2.desktop;
+application/x-extension-xhtml=userapp-Firefox-M694U2.desktop;
+application/x-extension-xht=userapp-Firefox-M694U2.desktop;

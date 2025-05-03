@@ -9,6 +9,7 @@ alias dotfiles="/usr/bin/git --git-dir=$HOME/.dotfiles/ --work-tree=$HOME"
 alias firefox="librewolf"
 alias gitroot='cd $(git rev-parse --show-toplevel)'
 alias grep='grep --color=auto'
+alias k='kubectl'
 alias leafpad='l3afpad'
 alias ll="ls --color=always --group-directories-first -Xhlp"
 alias la="ll -d .*"

@@ -44,6 +44,10 @@ if [ -f ~/.kube-completion.bash ]; then
   . ~/.kube-completion.bash
 fi
 
+if [ -f ~/.helm-completion.bash ]; then
+  . ~/.helm-completion.bash
+fi
+
 # If not running interactively, don't do anything
 [[ $- != *i* ]] && return
 

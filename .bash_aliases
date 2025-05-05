@@ -15,6 +15,7 @@ alias ll="ls --color=always --group-directories-first -Xhlp"
 alias la="ll -d .*"
 alias scrot='scrot --quality 100 -o -s ~/capture.png'
 alias screenshot="\scrot --quality 100 -o -s ~/capture.png && cat ~/capture.png | xclip -t image/png -selection clipboard"
+alias screentext="\scrot --quality 100 -o -s /tmp/ocr.png && tesseract /tmp/ocr.png /tmp/ocr && xclip -selection clipboard /tmp/ocr.txt"
 alias vi="vim"
 alias wget="wget -c"
 alias wechat="curl -sL https://raw.githubusercontent.com/huan/docker-wechat/master/dochat.sh | bash"

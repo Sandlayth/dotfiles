@@ -48,6 +48,10 @@ if [ -f ~/.helm-completion.bash ]; then
   . ~/.helm-completion.bash
 fi
 
+if [ -f ~/.helmfile-completion.bash ]; then
+  . ~/.helmfile-completion.bash
+fi
+
 # If not running interactively, don't do anything
 [[ $- != *i* ]] && return
 

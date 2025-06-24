@@ -3,5 +3,5 @@ Description=Change wallpaper every 5 minutes
 After=network.target
 
 [Service]
-ExecStart=/home/%U/.config/wallpaper/display_wallpaper.sh
+ExecStart=/home/%u/.config/wallpaper/display_wallpaper.sh
 Environment=XDG_RUNTIME_DIR=/run/user/%U

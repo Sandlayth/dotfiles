@@ -17,17 +17,4 @@ if [ -z "$DISPLAY" ] || [ ! -f "$XAUTHORITY" ]; then
     exit 1
 fi
 
-previous_state=""
-
-while true; do
-    current_state=$(xrandr --query | grep " connected" | grep "+")  # Make sure there's a space before "connected"
-
-    if [[ "$current_state" != "$previous_state" ]]; then
-        sleep 1
-        echo "[$USER] Monitor change detected on $DISPLAY. Restarting Polybar..."
-        "$HOME/.config/polybar/launch.sh"
-        previous_state="$current_state"
-    fi
-
-    sleep 2
-done
+feh --bg-fill "$(find -L /home/$USER/.config/wallpaper/images | shuf | head -n 1)"

@@ -3,9 +3,9 @@ Description=Monitor hotplug event watcher for Polybar
 After=graphical.target
 
 [Service]
-ExecStart=/home/sandlayth/.config/polybar/monitor-hotplug.sh
+ExecStart=/home/%u/.config/polybar/monitor-hotplug.sh
 Restart=always
-Environment=XAUTHORITY=/home/sandlayth/.Xauthority
+Environment=XAUTHORITY=/home/%u/.Xauthority
 
 [Install]
 WantedBy=default.target

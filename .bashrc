@@ -1,6 +1,5 @@
 # ~/.bashrc
 #
-
 # Variables
 if [ -f ~/.bash_variables ]; then
     . ~/.bash_variables
@@ -28,8 +27,8 @@ if [ -f ~/.fzf.bash ]; then
 fi
 
 # Completion scripts
-if [ -f /etc/bash_completion ]; then
-  source /etc/bash_completion
+if [ -d /etc/bash_completion.d ]; then
+  source /etc/bash_completion.d/*
 fi
 
 if [ -d /usr/local/etc/bash_completion.d/ ]; then

@@ -141,8 +141,8 @@ bindsym $mod+0      workspace 10
 # move workspaces to screen
 bindsym $mod+Control+Left move workspace to output left
 bindsym $mod+Control+Right move workspace to output right
-bindsym $mod+Control+Top move workspace to output top
-bindsym $mod+Control+Bottom move workspace to output bottom
+bindsym $mod+Control+Up move workspace to output up
+bindsym $mod+Control+Down move workspace to output down
 
 # Enable toggle to last workspace
 bindsym $mod+Tab workspace back_and_forth

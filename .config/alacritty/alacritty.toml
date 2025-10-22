@@ -1,0 +1,101 @@
+[window]
+# ~95% opacity like URxvt.background: [95]#000000
+opacity = 0.95
+padding = { x = 6, y = 6 }
+dynamic_title = true
+
+[scrolling]
+history = 10000
+multiplier = 3
+
+[font]
+normal = { family = "DejaVuSansM Nerd Font Mono", style = "Book" }
+size = 7.0
+
+[env]
+# If any TUI misbehaves with "alacritty", switch to "xterm-256color"
+TERM = "alacritty"
+
+# ---------- Colors (translated 1:1 from your urxvt) ----------
+[colors.primary]
+foreground = "#f2f2f2"
+background = "#101010"
+
+[colors.normal]
+black   = "#101010" # color0
+red     = "#f13a21" # color1
+green   = "#93f91d" # color2
+yellow  = "#ffd00a" # color3
+blue    = "#004f9e" # color4
+magenta = "#ec0048" # color5
+cyan    = "#2aa7e7" # color6
+white   = "#f2f2f2" # color7
+
+[colors.bright]
+black   = "#1d202f" # color8
+red     = "#ff361e" # color9
+green   = "#ffc005" # color10
+yellow  = "#93ff00" # color11
+blue    = "#0071ff" # color12
+magenta = "#ef0051" # color13
+cyan    = "#4bb8fd" # color14
+white   = "#a020f0" # color15
+
+[cursor]
+style = { shape = "Block", blinking = "On" }
+unfocused_hollow = true
+
+[selection]
+save_to_clipboard = true
+
+[mouse]
+hide_when_typing = true
+
+# ---------- Key bindings (rough equivalents to your URxvt) ----------
+[[keyboard.bindings]]
+key = "Up"
+mods = "Control"
+action = "IncreaseFontSize"
+
+[[keyboard.bindings]]
+key = "Down"
+mods = "Control"
+action = "DecreaseFontSize"
+
+[[keyboard.bindings]]
+key = "Z"
+mods = "Control|Shift"
+action = "ResetFontSize"
+
+# Page-wise scroll like Shift+PgUp/PgDn
+[[keyboard.bindings]]
+key = "PageUp"
+mods = "Shift"
+action = "ScrollPageUp"
+
+[[keyboard.bindings]]
+key = "PageDown"
+mods = "Shift"
+action = "ScrollPageDown"
+
+# Optional: emulate the Ctrl+Left/Right word jumps in many shells if needed
+# (Most shells handle these natively; uncomment if you need raw escapes.)
+# [[keyboard.bindings]]
+# key = "Left"
+# mods = "Control"
+# chars = "\u001b[1;5D"
+# [[keyboard.bindings]]
+# key = "Right"
+# mods = "Control"
+# chars = "\u001b[1;5C"
+
+# ---------- URL hints (open with Firefox, similar to urxvt-matcher) ----------
+# Press Ctrl+Shift+U, a selector pops; press the hint to open in Firefox.
+[hints]
+alphabet = "asdfghjklqwertyuiopzxcvbnm"
+[[hints.enabled]]
+regex = "(https?://\\S+)"
+command = "brave"
+post_processing = true
+binding = { key = "U", mods = "Control|Shift" }
+mouse.enabled = true

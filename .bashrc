@@ -21,6 +21,11 @@ if [ -f ~/.bash_prompt ]; then
     . ~/.bash_prompt
 fi
 
+# Pyenv
+if [ -f ~/.bash_pyenv ]; then
+    . ~/.bash_pyenv
+fi
+
 # FuzzyFinder
 if [ -f ~/.fzf.bash ]; then
     source ~/.fzf.bash
@@ -33,6 +38,10 @@ fi
 
 if [ -d /usr/local/etc/bash_completion.d/ ]; then
   for f in /usr/local/etc/bash_completion.d/*; do source $f; done
+fi
+
+if [ -f ~/.asdf-completion.bash ]; then
+  . ~/.asdf-completion.bash
 fi
 
 if [ -f ~/.git-completion.bash ]; then

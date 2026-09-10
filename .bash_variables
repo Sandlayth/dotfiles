@@ -15,6 +15,9 @@ shopt -s histappend
 # After each command, save and reload history
 export PROMPT_COMMAND="history -a; history -c; history -r; $PROMPT_COMMAND"
 
+# ASDF paths for bin versions
+export PATH="${ASDF_DATA_DIR:-$HOME/.asdf}/shims:$PATH"
+
 if [ -f ~/.bash_env ]; then
     . ~/.bash_env
 fi

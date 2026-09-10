@@ -13,6 +13,7 @@ application/x-extension-html=userapp-Firefox-M694U2.desktop
 application/x-extension-shtml=userapp-Firefox-M694U2.desktop
 application/x-extension-xhtml=userapp-Firefox-M694U2.desktop
 application/x-extension-xht=userapp-Firefox-M694U2.desktop
+x-scheme-handler/claude-cli=claude-code-url-handler.desktop
 
 [Added Associations]
 x-scheme-handler/http=firefox-esr.desktop;userapp-Firefox-M694U2.desktop;

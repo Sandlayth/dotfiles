@@ -9,7 +9,7 @@
 #
 # Please see http://i3wm.org/docs/userguide.html for a complete reference!
 
-exec /home/$USER/.config/i3/start_apps
+exec /home/$USER/.config/i3/start_apps/$(hostname).$USER
 # Launch polybar on all screens; exec_always relaunches it on every i3 restart (script in ~/.config/polybar/)
 exec_always --no-startup-id $HOME/.config/polybar/launch.sh
 

@@ -1,0 +1,6 @@
+#!/bin/sh
+# Startup apps for yassine on aurora. Shared daemons live in ./common.
+. "$HOME/.config/i3/start_apps/common"
+
+bitwarden-desktop &
+brave &

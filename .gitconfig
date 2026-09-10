@@ -29,3 +29,5 @@
 	email = modepadu95@riseup.net
 [push]
 	autoSetupRemote = true
+[pull]
+	rebase = true

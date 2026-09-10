@@ -19,6 +19,7 @@ alias screentext="\scrot --quality 100 -o -s /tmp/ocr_$USER.png && tesseract /tm
 alias vi="vim"
 alias wget="wget -c"
 alias wechat="curl -sL https://raw.githubusercontent.com/huan/docker-wechat/master/dochat.sh | bash"
+alias xclipp="xclip -selection clipboard"
 alias youtube-audio="yt-dlp -ix --audio-quality 0 --audio-format mp3"
 
 

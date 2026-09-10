@@ -9,6 +9,9 @@ feh --bg-fill $(find -L /usr/share/wallpapers | shuf | head -n 1)
 numlockx &
 pasystray &
 
+# Terminal at login (both users); honour $TERMINAL, default to alacritty
+${TERMINAL:-alacritty} &
+
 # Touchpad tuning (aurora hardware)
 xinput set-prop 'SynPS/2 Synaptics TouchPad' 'libinput Accel Speed' 0.7
 xinput set-prop 'SynPS/2 Synaptics TouchPad' 'libinput Tapping Enabled' 1

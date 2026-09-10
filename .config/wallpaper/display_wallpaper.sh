@@ -17,4 +17,4 @@ if [ -z "$DISPLAY" ] || [ ! -f "$XAUTHORITY" ]; then
     exit 1
 fi
 
-feh --bg-fill "$(find -L /home/$USER/.config/wallpaper/images | shuf | head -n 1)"
+feh --bg-max "$(find -L /home/$USER/.config/wallpaper/images -maxdepth 1 -type f | shuf | head -n 1)"

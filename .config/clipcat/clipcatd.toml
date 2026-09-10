@@ -4,10 +4,10 @@ daemonize = true
 max_history = 50
 # File path of clip history,
 # if you omit this value, clipcatd persists history in `$XDG_CACHE_HOME/clipcat/clipcatd-history`.
-history_file_path = "/home/yassine/.cache/clipcat/clipcatd-history"
+# Omitted so it resolves per-user via XDG instead of a hardcoded home.
 # File path of PID file,
 # if you omit this value, clipcatd places the PID file on `$XDG_RUNTIME_DIR/clipcatd.pid`.
-pid_file = "/run/user/1000/clipcatd.pid"
+# Omitted so it resolves per-user via $XDG_RUNTIME_DIR instead of a hardcoded uid.
 # Controls how often the program updates its stored value of the Linux
 # primary selection. In the Linux environment, the primary selection is a
 # mechanism that automatically updates to reflect the current highlighted text or
@@ -57,7 +57,7 @@ host = "127.0.0.1"
 port = 45045
 # Path of unix domain socket.
 # If you omit this value, clipcatd places the socket on `$XDG_RUNTIME_DIR/clipcat/grpc.sock`.
-local_socket = "/run/user/1000/clipcat/grpc.sock"
+# Omitted so it resolves per-user via $XDG_RUNTIME_DIR instead of a hardcoded uid.
 
 [dbus]
 # Enable D-Bus.

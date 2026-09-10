@@ -8,5 +8,5 @@ pasystray &
 brave &
 xinput set-prop 'SynPS/2 Synaptics TouchPad' 'libinput Accel Speed' 0.7
 xinput set-prop 'SynPS/2 Synaptics TouchPad' 'libinput Tapping Enabled' 1
-xset +fp /home/yassine/.local/share/fonts
+xset +fp /home/$USER/.local/share/fonts
 xset fp rehash

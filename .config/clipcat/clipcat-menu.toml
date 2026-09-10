@@ -2,7 +2,7 @@
 # clipcat-menu connects to server via unix domain socket if `server_endpoint` is a file path like:
 # "/run/user/<user-id>/clipcat/grpc.sock".
 # clipcat-menu connects to server via http if `server_endpoint` is a URL like: "http://127.0.0.1:45045".
-server_endpoint = "/run/user/1000/clipcat/grpc.sock"
+# Omitted so it resolves per-user via $XDG_RUNTIME_DIR instead of a hardcoded uid.
 
 # The default finder to invoke when no "--finder=<finder>" option provided.
 finder = "dmenu"

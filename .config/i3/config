@@ -69,6 +69,9 @@ bindsym $mod+q kill
 bindsym $mod+d exec --no-startup-id /home/$USER/.local/bin/dmenu_recent_aliases
 bindsym $mod+w exec --no-startup-id /usr/bin/dmenu-win
 
+# Cycle a full-height 4:3 window area: pinned right -> pinned left -> full width
+bindsym $mod+a exec --no-startup-id /home/$USER/.config/i3/aspect-gap
+
 #There also is the (new) i3-dmenu-desktop which only displays applications
 # shipping a .desktop file. It is a wrapper around dmenu, so you need that
 # installed.

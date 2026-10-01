@@ -5,7 +5,7 @@
 ~/.screenlayout/home.sh &
 clipcatd &
 redshift-gtk &
-feh --bg-fill $(find -L /usr/share/wallpapers | shuf | head -n 1)
+"$HOME/.config/wallpaper/grid-wall" &
 numlockx &
 pasystray &
 

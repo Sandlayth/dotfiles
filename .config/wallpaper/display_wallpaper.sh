@@ -17,4 +17,5 @@ if [ -z "$DISPLAY" ] || [ ! -f "$XAUTHORITY" ]; then
     exit 1
 fi
 
-feh --bg-max "$(find -L /home/$USER/.config/wallpaper/images -maxdepth 1 -type f | shuf | head -n 1)"
+# DISPLAY/XAUTHORITY are now set, so grid-wall's feh call works from the timer too.
+exec "/home/$USER/.config/wallpaper/grid-wall"

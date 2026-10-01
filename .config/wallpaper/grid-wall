@@ -1,0 +1,41 @@
+#!/bin/sh
+# Compose and set a 1920x1200 wallpaper: a COLSxROWS grid of random wallpapers,
+# each cover-cropped to its cell, with only the outer edge of each tile softened
+# (a thin feathered seam; tile interiors stay sharp). A fresh random selection
+# every run, so the combination practically never repeats.
+#
+# Usage: grid-wall [out.png] [cols] [rows] [seam_px] [feather] [smear]
+#   With no args it writes ~/.cache/wallpaper-grid.png and sets it with feh.
+#   seam_px  width of the softened line at each tile edge (0 = hard edges)
+#   feather  how gradually that line fades out
+#   smear    how far neighbours bleed across the edge
+out="${1:-${XDG_CACHE_HOME:-$HOME/.cache}/wallpaper-grid.png}"
+COLS="${2:-5}"; ROWS="${3:-5}"; SEAM="${4:-10}"; FEATHER="${5:-1}"; SMEAR="${6:-5}"
+W=1920; H=1200; cw=$(( W / COLS )); ch=$(( H / ROWS )); n=$(( COLS * ROWS ))
+
+pool=$(find -L /usr/share/wallpapers -type f \( -iname '*.jpg' -o -iname '*.png' \))
+[ -z "$pool" ] && { echo "grid-wall: no wallpapers found in /usr/share/wallpapers" >&2; exit 1; }
+mkdir -p "$(dirname "$out")"
+tmp=$(mktemp -d)
+
+i=0
+echo "$pool" | shuf | head -n "$n" | while IFS= read -r src; do
+  magick "$src" -resize ${cw}x${ch}^ -gravity center -extent ${cw}x${ch} "$tmp/$(printf '%03d' "$i").png"
+  i=$((i+1))
+done
+magick montage "$tmp"/*.png -tile ${COLS}x${ROWS} -geometry ${cw}x${ch}+0+0 -background black "$tmp/grid.png"
+magick "$tmp/grid.png" -resize ${W}x${H}! "$tmp/grid.png"
+
+if [ "$SEAM" -gt 0 ]; then
+  draw=""
+  c=1; while [ "$c" -lt "$COLS" ]; do x=$(( cw * c )); draw="$draw -draw \"line $x,0 $x,$H\""; c=$(( c + 1 )); done
+  r=1; while [ "$r" -lt "$ROWS" ]; do y=$(( ch * r )); draw="$draw -draw \"line 0,$y $W,$y\""; r=$(( r + 1 )); done
+  eval magick -size ${W}x${H} xc:black -stroke white -strokewidth "$SEAM" $draw -blur 0x${FEATHER} "$tmp/mask.png"
+  magick "$tmp/grid.png" -blur 0x${SMEAR} "$tmp/blur.png"
+  magick "$tmp/grid.png" "$tmp/blur.png" "$tmp/mask.png" -composite "$out"
+else
+  cp "$tmp/grid.png" "$out"
+fi
+rm -rf "$tmp"
+
+feh --no-fehbg --bg-fill "$out"

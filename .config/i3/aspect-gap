@@ -1,16 +1,19 @@
 #!/bin/sh
-# Cycle the focused i3 workspace through three layouts on one keypress:
+# Cycle EVERY workspace (existing and future) through three layouts on one key:
 #   1) a full-height 4:3 window area pinned to the RIGHT (empty column left)
 #   2) the same area pinned to the LEFT (empty column right)
 #   3) full width (no gap)
+#
+# Uses `gaps ... all`, which sets a global default, so the choice applies to
+# all current workspaces and is inherited by new ones.
 #
 # The empty-column width is derived from the OUTPUT width and the workspace
 # HEIGHT -- both unaffected by left/right gaps -- so it stays a true 4:3 area
 # every press, at any resolution and with any bar height.
 
-# Focused workspace: height (stable under L/R gaps), number, and its output.
-read -r H WS OUT <<EOF
-$(i3-msg -t get_workspaces | jq -r '.[] | select(.focused) | "\(.rect.height) \(.num) \(.output)"')
+# Focused workspace height (stable under L/R gaps) and its output.
+read -r H OUT <<EOF
+$(i3-msg -t get_workspaces | jq -r '.[] | select(.focused) | "\(.rect.height) \(.output)"')
 EOF
 
 # Full width of that output (constant; not reduced by outer gaps).
@@ -20,7 +23,7 @@ W=$(i3-msg -t get_outputs | jq -r --arg o "$OUT" '.[] | select(.name == $o) | .r
 gap=$(( W - H * 4 / 3 ))
 [ "$gap" -lt 0 ] && gap=0
 
-state="${XDG_RUNTIME_DIR:-/tmp}/i3-aspect-gap.${WS}"
+state="${XDG_RUNTIME_DIR:-/tmp}/i3-aspect-gap"
 case "$(cat "$state" 2>/dev/null)" in
   right) next=left ;;
   left)  next=off ;;
@@ -28,9 +31,9 @@ case "$(cat "$state" 2>/dev/null)" in
 esac
 
 case "$next" in
-  right) i3-msg "gaps right current set 0; gaps left current set $gap" >/dev/null ;;
-  left)  i3-msg "gaps left current set 0; gaps right current set $gap" >/dev/null ;;
-  off)   i3-msg "gaps left current set 0; gaps right current set 0" >/dev/null ;;
+  right) i3-msg "gaps right all set 0; gaps left all set $gap" >/dev/null ;;
+  left)  i3-msg "gaps left all set 0; gaps right all set $gap" >/dev/null ;;
+  off)   i3-msg "gaps left all set 0; gaps right all set 0" >/dev/null ;;
 esac
 
 printf '%s' "$next" > "$state"

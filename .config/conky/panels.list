@@ -1,0 +1,9 @@
+# Ordered list of panels (top to bottom). Shared by start-conkys.sh and
+# gen-layout.sh. One panel name per line; "<name>" -> conky-panels/<name>-panel.lua
+weather
+system
+power
+net
+vpn
+nowplaying
+temp

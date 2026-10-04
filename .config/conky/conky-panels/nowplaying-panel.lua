@@ -1,6 +1,6 @@
 require(".common")
 
-conky.config = { alignment=ref_alignment, gap_x=ref_pos_x, gap_y=ref_pos_y+929 }
+conky.config = { alignment=ref_alignment, gap_x=ref_pos_x, gap_y=ref_pos_y+937 }
 for k,v in pairs(common_config) do conky.config[k] = v end
 
 conky.text = ([[

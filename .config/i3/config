@@ -228,10 +228,10 @@ client.urgent #2f343a #900000 #ffffff #900000
 #                         *** Workspace specific settings ***                     #
 ##=================================================##
 # Assign Workspaces:
-assign [class="Bitwarden"] workspace 2
-assign [class="Keybase"] workspace 2
-assign [class="thunderbird-default"] workspace 2
-assign [class="discord"] workspace 3
-assign [class="Signal"] workspace 3
-assign [class="Ferdium"] workspace 3
+assign [class="(?i)bitwarden"] workspace 2
+assign [class="(?i)keybase"] workspace 2
+assign [class="(?i)thunderbird"] workspace 2
+assign [class="(?i)discord"] workspace 3
+assign [class="(?i)signal"] workspace 3
+assign [class="(?i)ferdium"] workspace 3
 

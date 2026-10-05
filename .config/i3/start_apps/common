@@ -10,7 +10,7 @@ numlockx &
 pasystray &
 
 # Compositor (needed for conky translucency) + the conky dashboard sidebars
-pgrep -x picom >/dev/null || picom -b
+pgrep -x -u "$(id -u)" picom >/dev/null || picom -b
 "$HOME/.config/conky/start-conkys.sh" &
 
 # Terminal at login (both users); honour $TERMINAL, default to alacritty

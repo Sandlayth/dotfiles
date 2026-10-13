@@ -1,3 +1,5 @@
 .*un~
 
 **/.claude/settings.local.json
+
+.config/mimeapps.list

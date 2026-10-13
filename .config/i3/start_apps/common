@@ -9,6 +9,9 @@ redshift-gtk &
 numlockx &
 pasystray &
 
+# Default applications (common for all; web browser per user)
+"$HOME/.config/set-default-apps.sh" &
+
 # Compositor (needed for conky translucency) + the conky dashboard sidebars
 pgrep -x -u "$(id -u)" picom >/dev/null || picom -b
 "$HOME/.config/conky/start-conkys.sh" &

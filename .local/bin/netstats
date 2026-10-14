@@ -1,0 +1,35 @@
+#!/bin/sh
+# netstats — network usage history (from vnstat's persistent DB in /var/lib/vnstat).
+#
+# Usage: netstats [period]
+#   day | d        per-day usage (default view is also a summary)
+#   week | w       last 7 days
+#   month | m      per-month usage
+#   year | y       per-year usage
+#   hour | h       per-hour usage       (hg = hourly graph)
+#   5 | 5min       last 5-minute slots
+#   top | t        top traffic days
+#   live | l       live transfer rate
+#   graph | g [f]  write+open a summary PNG (default /tmp/netstats-<iface>.png)
+#   summary        overall summary (default)
+#
+# Interface auto-detected from the default route; override with NETSTATS_IFACE.
+iface="${NETSTATS_IFACE:-$(ip -o -4 route show to default 2>/dev/null | awk '{print $5; exit}')}"
+[ -z "$iface" ] && iface="$(vnstat --iflist 2>/dev/null | awk -F': ' '/Available/{print $2}' | awk '{print $1}')"
+
+case "${1:-summary}" in
+    d|day|daily)     vnstat -i "$iface" -d ;;
+    w|week|weekly)   vnstat -i "$iface" -d 7 ;;
+    m|month|monthly) vnstat -i "$iface" -m ;;
+    y|year|yearly)   vnstat -i "$iface" -y ;;
+    h|hour|hourly)   vnstat -i "$iface" -h ;;
+    hg)              vnstat -i "$iface" -hg ;;
+    5|5min)          vnstat -i "$iface" -5 ;;
+    t|top)           vnstat -i "$iface" -t ;;
+    l|live)          vnstat -i "$iface" -l ;;
+    g|graph)
+        out="${2:-/tmp/netstats-$iface.png}"
+        vnstati -i "$iface" -s -o "$out" && echo "$out" && command -v xdg-open >/dev/null 2>&1 && xdg-open "$out" >/dev/null 2>&1 &
+        ;;
+    s|summary|*)     vnstat -i "$iface" ;;
+esac

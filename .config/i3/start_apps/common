@@ -19,15 +19,14 @@ pgrep -x -u "$(id -u)" picom >/dev/null || picom -b
 # Session defaults (all users): 4:3 window area on the LEFT + notifications in
 # do-not-disturb.
 (
-    # Wait until polybar has reserved its space (workspace height < output
-    # height) so the 4:3 gap is computed from the USABLE area (matches $mod+a),
+    # Wait for polybar to come up, then give it a moment to reserve its top
+    # strut, so the 4:3 gap is computed from the USABLE area (matches $mod+a),
     # not the full screen.
     for _ in $(seq 20); do
-        oh=$(i3-msg -t get_outputs    | jq -r '.[]|select(.active)|.rect.height' | head -1)
-        wh=$(i3-msg -t get_workspaces | jq -r '.[]|select(.focused)|.rect.height')
-        [ -n "$wh" ] && [ -n "$oh" ] && [ "$wh" -lt "$oh" ] && break
+        pgrep -u "$(id -u)" -x polybar >/dev/null && break
         sleep 0.5
     done
+    sleep 2
     "$HOME/.config/i3/aspect-gap" left
     for _ in $(seq 10); do
         dunstctl set-paused true 2>/dev/null && break

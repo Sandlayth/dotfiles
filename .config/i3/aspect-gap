@@ -24,10 +24,16 @@ gap=$(( W - H * 4 / 3 ))
 [ "$gap" -lt 0 ] && gap=0
 
 state="${XDG_RUNTIME_DIR:-/tmp}/i3-aspect-gap"
-case "$(cat "$state" 2>/dev/null)" in
-  right) next=left ;;
-  left)  next=off ;;
-  *)     next=right ;;
+# An explicit state (left|right|off) sets it directly; otherwise cycle.
+case "$1" in
+  left|right|off) next="$1" ;;
+  *)
+    case "$(cat "$state" 2>/dev/null)" in
+      right) next=left ;;
+      left)  next=off ;;
+      *)     next=right ;;
+    esac
+    ;;
 esac
 
 case "$next" in

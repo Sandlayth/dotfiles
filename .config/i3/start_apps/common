@@ -16,6 +16,17 @@ pasystray &
 pgrep -x -u "$(id -u)" picom >/dev/null || picom -b
 "$HOME/.config/conky/start-conkys.sh" &
 
+# Session defaults (all users): 4:3 window area on the LEFT + notifications in
+# do-not-disturb. Delayed so i3 and dunst are ready.
+(
+    sleep 2
+    "$HOME/.config/i3/aspect-gap" left
+    for _ in 1 2 3 4 5 6 7 8 9 10; do
+        dunstctl set-paused true 2>/dev/null && break
+        sleep 1
+    done
+) &
+
 # Terminal at login (both users); honour $TERMINAL, default to alacritty
 ${TERMINAL:-alacritty} &
 

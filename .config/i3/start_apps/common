@@ -7,6 +7,7 @@ clipcatd &
 redshift-gtk &
 "$HOME/.config/wallpaper/grid-wall" &
 numlockx &
+"$HOME/.config/i3/idle-inhibit" &
 
 # Default applications (common for all; web browser per user)
 "$HOME/.config/set-default-apps.sh" &

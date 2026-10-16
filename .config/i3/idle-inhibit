@@ -1,0 +1,34 @@
+#!/bin/sh
+# Keep the screen awake while a window is fullscreen (i.e. watching a video) and
+# let X's normal screensaver/DPMS timers blank it again once idle.
+#
+# X's built-in screensaver + DPMS have no idea a fullscreen player is up, so they
+# blank the screen after their timeout mid-playback. This flips them off only
+# while a window is fullscreen, so the default power saving still applies the
+# rest of the time -- including when only music is playing.
+
+# Single instance: replace any older copy (i3 restart re-runs the startup exec).
+for _p in $(pgrep -f -u "$(id -u)" "$HOME/.config/i3/idle-inhibit"); do
+    [ "$_p" = "$$" ] || kill "$_p" 2>/dev/null
+done
+
+active() {
+    # Any window fullscreen (fullscreen_mode 1 = on output, 2 = global)?
+    i3-msg -t get_tree 2>/dev/null \
+        | jq -e 'recurse(.nodes[]?,.floating_nodes[]?) | select((.fullscreen_mode? // 0) > 0)' \
+          >/dev/null 2>&1
+}
+
+inhibited=0
+restore() { xset +dpms; xset s on; }        # back to the configured timers
+trap 'restore' EXIT                          # never leave DPMS off if we die
+trap 'exit 0' INT TERM                       # signal -> exit -> restore (killable)
+
+while :; do
+    if active; then
+        [ "$inhibited" = 1 ] || { xset -dpms; xset s off; inhibited=1; }
+    else
+        [ "$inhibited" = 0 ] || { restore; inhibited=0; }
+    fi
+    sleep 30 & wait $!   # backgrounded so a TERM interrupts the wait at once
+done

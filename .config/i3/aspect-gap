@@ -36,10 +36,22 @@ case "$1" in
     ;;
 esac
 
+# Show/hide the per-side conky windows (named conky-left / conky-right in
+# common.lua) so the dashboard only appears in the EMPTY column -- never behind
+# the (now translucent) windows. picom fades them on map/unmap.
+conky_show() { for w in $(xdotool search --class "conky-$1" 2>/dev/null); do xdotool windowmap "$w"; xdotool windowlower "$w"; done; }
+conky_hide() { for w in $(xdotool search --class "conky-$1" 2>/dev/null); do xdotool windowunmap "$w"; done; }
+
 case "$next" in
-  right) i3-msg "gaps right all set 0; gaps left all set $gap" >/dev/null ;;
-  left)  i3-msg "gaps left all set 0; gaps right all set $gap" >/dev/null ;;
-  off)   i3-msg "gaps left all set 0; gaps right all set 0" >/dev/null ;;
+  # window on the right, empty column on the LEFT  -> show the left conky
+  right) i3-msg "gaps right all set 0; gaps left all set $gap" >/dev/null
+         conky_show left; conky_hide right ;;
+  # window on the left, empty column on the RIGHT   -> show the right conky
+  left)  i3-msg "gaps left all set 0; gaps right all set $gap" >/dev/null
+         conky_show right; conky_hide left ;;
+  # full width, no column -> hide both
+  off)   i3-msg "gaps left all set 0; gaps right all set 0" >/dev/null
+         conky_hide left; conky_hide right ;;
 esac
 
 printf '%s' "$next" > "$state"

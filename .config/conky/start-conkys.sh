@@ -12,3 +12,8 @@ done
 # i3 ignores override windows, so lowering them once keeps them in the background.
 sleep 2
 for wid in $(xdotool search --class conky 2>/dev/null); do xdotool windowlower "$wid"; done
+
+# Only the conky in the empty column should show: re-apply the current aspect
+# layout (default 'left') so a manual restart doesn't leave both sides visible.
+state="${XDG_RUNTIME_DIR:-/tmp}/i3-aspect-gap"
+"$HOME/.config/i3/aspect-gap" "$(cat "$state" 2>/dev/null || echo left)" >/dev/null 2>&1

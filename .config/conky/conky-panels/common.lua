@@ -68,6 +68,7 @@ common_config = {
 own_window=true,
 own_window_type="override",
 own_window_hints="undecorated,below,sticky,skip_taskbar,skip_pager",
+own_window_class='conky-' .. __side,  -- per-side handle for show/hide (aspect-gap)
 
 -- Don't use a background process.
 background=false,

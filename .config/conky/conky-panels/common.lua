@@ -20,7 +20,7 @@ getmetatable("").__mod = interp
 
 
 -- Main window size in pixels. Changing this is not recommended.
-width=360
+width=364
 
 -- The reference position for conkies: left edge of the 376px strip, below polybar.
 local __side = os.getenv("CONKY_SIDE") or "left"
@@ -93,7 +93,8 @@ extra_newline=false,
 
 -- Background
 own_window_colour='#b0303030',  -- ARGB: ~69% grey, composited by picom
-border_width=10,
+border_width=0,
+border_inner_margin=6,   -- small text padding (was a large ~10px border inset)
 
 -- Size
 minimum_width=width,
@@ -104,6 +105,10 @@ stippled_borders=0,
 update_interval=1.0,
 uppercase=false,
 use_spacer='none',
+
+-- Process lists (${top}/${top_mem}): names trimmed so two columns fit the
+-- panel at the normal font (conky prints 6-char "100.00" values, eating width).
+top_name_width=8,
 
 -- Graphs
 show_graph_scale=false,

@@ -14,13 +14,25 @@ sink_desc() {
         cur&&$1=="Description:"{$1="";sub(/^ /,"");print;exit}'
 }
 
-status=$(playerctl status 2>/dev/null)
-if command -v playerctl >/dev/null 2>&1 && { [ "$status" = Playing ] || [ "$status" = Paused ]; }; then
-    playerctl metadata --format '{{artist}} — {{title}}' 2>/dev/null \
-        | sed 's/^ *— *//' | rtl | fold -s -w "$W"
-else
-    echo 'nothing playing'
-fi
+# There may be several MPRIS players (e.g. two browsers); `playerctl` with no
+# -p reports the *first* one, which is often Stopped. Pick the one that is
+# actually Playing (else the first Paused one).
+pick_player() {
+    playerctl -l 2>/dev/null | while IFS= read -r p; do
+        [ "$(playerctl -p "$p" status 2>/dev/null)" = "$1" ] && { printf '%s\n' "$p"; break; }
+    done
+}
+player=$(pick_player Playing); [ -z "$player" ] && player=$(pick_player Paused)
 
+if command -v playerctl >/dev/null 2>&1 && [ -n "$player" ]; then
+    title=$(playerctl -p "$player" metadata --format '{{artist}} — {{title}}' 2>/dev/null \
+            | sed 's/^ *— *//' | rtl | fold -s -w "$W" | head -3)
+else
+    title='nothing playing'
+fi
+# Always exactly 3 lines (pad with blanks) so the section height never changes.
+printf '%s\n' "$title" | awk 'NR<=3 {print} END {for (i=NR+1; i<=3; i++) print ""}'
+
+# Output sink on a single line (fixed footprint).
 out=$(sink_desc)
-[ -n "$out" ] && printf '%s %s\n' "$spk" "$out" | rtl | fold -s -w "$W"
+[ -n "$out" ] && printf '%s %s\n' "$spk" "$out" | rtl | fold -s -w "$W" | head -1

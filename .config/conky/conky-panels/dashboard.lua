@@ -15,11 +15,11 @@ ${voffset 10}${color &{brand}}${font &{font}:size=11}  󰖙  WEATHER${font}
 ${voffset 8}${color &{main}}${font &{font}:size=12}${goto 16}${texeci 1800 $HOME/.config/conky/bin/weather.sh}${font}
 
 ${color &{brand}}${font &{font}:size=11}    SYSTEM${font}
-${voffset 8}${color &{main}}CPU  ${cpu}%${goto 110}${cpubar cpu0 8,250}
-${voffset 8}RAM  ${memperc}%${goto 110}${membar 8,250}
-${voffset 8}SWAP ${swapperc}%${goto 110}${swapbar 8,250}
-${voffset 8}DISK ${fs_used_perc /}%${goto 110}${fs_bar 8,250 /}
-${voffset 8}HOME ${fs_used_perc @HOME@}%${goto 110}${fs_bar 8,250 @HOME@}
+${voffset 8}${color &{main}}CPU  ${cpu}%${goto 110}${cpubar cpu0 8,138}${goto 254}${lua cpu_cores}
+${voffset 8}RAM  ${memperc}%${goto 110}${membar 8,138}${goto 254}${mem}/${memmax}
+${voffset 8}SWAP ${swapperc}%${goto 110}${swapbar 8,138}${goto 254}${swap}/${swapmax}
+${voffset 8}DISK ${fs_used_perc /}%${goto 110}${fs_bar 8,138 /}${goto 254}${fs_used /}/${fs_size /}
+${voffset 8}HOME ${fs_used_perc @HOME@}%${goto 110}${fs_bar 8,138 @HOME@}${goto 254}${fs_used @HOME@}/${fs_size @HOME@}
 ${voffset 12}${color &{dimmed}}${goto 12}TOP CPU${goto 192}TOP MEM
 ${voffset 3}${color &{main}}${goto 12}${top name 1}${goto 106}${top cpu 1}%${goto 192}${top_mem name 1}${goto 286}${top_mem mem 1}%
 ${voffset 1}${goto 12}${top name 2}${goto 106}${top cpu 2}%${goto 192}${top_mem name 2}${goto 286}${top_mem mem 2}%

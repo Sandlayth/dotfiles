@@ -105,6 +105,7 @@ stippled_borders=0,
 update_interval=1.0,
 uppercase=false,
 use_spacer='none',
+short_units=true,   -- 13.7GiB -> 13.7G, so used/total fits after each bar
 
 -- Process lists (${top}/${top_mem}): names trimmed so two columns fit the
 -- panel at the normal font (conky prints 6-char "100.00" values, eating width).
@@ -113,6 +114,9 @@ top_name_width=8,
 -- Graphs
 show_graph_scale=false,
 show_graph_range=false,
+
+-- Lua helpers reachable via ${lua ...} (absolute path: cwd-independent).
+lua_load=(os.getenv("HOME") or "") .. "/.config/conky/conky-panels/helpers.lua",
 
 -- Fonts
 use_xft=true,
